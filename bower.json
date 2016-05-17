@@ -1,0 +1,30 @@
+{
+  "name": "gudfud",
+  "homepage": "https://github.com/Flowdeeps/gudfud",
+  "authors": [
+    "Flowdeeps <speedwolf@gmail.com> Umbriel <dee.harding@gmail.com>"
+  ],
+  "description": "A scraped copy of the BBC Goodfood website before it was unceremoniously pulled offline",
+  "main": "front-end/index.html",
+  "keywords": [
+    "Recipes",
+    "BBC",
+    "Goodfood",
+    "Taxpayers",
+    "Pramtoys"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "blankslate": "https://github.com/flowdeeps/blankslate.git",
+    "angular2-build": "^2.0.0-alpha.34"
+  }
+}
