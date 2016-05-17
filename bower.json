@@ -23,8 +23,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^2.2.3",
-    "blankslate": "https://github.com/flowdeeps/blankslate.git",
-    "angular2-build": "^2.0.0-alpha.34"
+    "font-awesome": "fontawesome#^4.6.3"
   }
 }
