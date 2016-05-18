@@ -16,10 +16,24 @@ L = [f for f in os.listdir(path) if not f.startswith('.')]
 def doHTML(L):
     html = open(os.path.join(path, fileName),'r').read()
     soup = BeautifulSoup(html, "html5lib")
+    ''' title property '''
     title = soup.title.string.replace("BBC Food - Recipes - ","")
     print title
-    prep = soup.findAll("p", { "class" : "recipe-metadata__prep-time" })
-    print prep[0].string
+    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text"]
+    for i in range(len(matchClass)):
+        for para in soup.findAll("p", {"class": matchClass[i]}):
+            if ("_prep" in matchClass[i]):
+                prep = para.text
+                print prep
+            if ("_cook" in matchClass[i]):
+                cook = para.text
+                print cook
+            if ("_serv" in matchClass[i]):
+                serves = para.text
+                print serves
+            if ("_diet" in matchClass[i]):
+                vege = True
+                print serves
 
 if not L.__len__() == 0:
     for index, fileName in enumerate(L):
