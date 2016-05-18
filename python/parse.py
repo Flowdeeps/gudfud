@@ -19,21 +19,28 @@ def doHTML(L):
     ''' title property '''
     title = soup.title.string.replace("BBC Food - Recipes - ","")
     print title
-    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text"]
+    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text", "recipe-description__text", "author"]
     for i in range(len(matchClass)):
         for para in soup.findAll("p", {"class": matchClass[i]}):
             if ("_prep" in matchClass[i]):
                 prep = para.text
                 print prep
-            if ("_cook" in matchClass[i]):
+            elif ("_cook" in matchClass[i]):
                 cook = para.text
                 print cook
-            if ("_serv" in matchClass[i]):
+            elif ("_serv" in matchClass[i]):
                 serves = para.text
                 print serves
-            if ("_diet" in matchClass[i]):
+            elif ("_diet" in matchClass[i]):
                 vege = True
                 print serves
+            elif ("-desc" in matchClass[i]):
+                desc = para.text
+                print desc
+        for anchor in soup.findAll("a", {"itemprop": matchClass[i]}):
+            if ("auth" in matchClass[i]):
+                author = anchor.text
+                print author
 
 if not L.__len__() == 0:
     for index, fileName in enumerate(L):
