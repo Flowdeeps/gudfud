@@ -17,7 +17,9 @@ def doHTML(L):
     html = open(os.path.join(path, fileName),'r').read()
     soup = BeautifulSoup(html, "html5lib")
     title = soup.title.string.replace("BBC Food - Recipes - ","")
-    print title ''' this is the title string '''
+    print title
+    prep = soup.findAll("p", { "class" : "recipe-metadata__prep-time" })
+    print prep[0].string
 
 if not L.__len__() == 0:
     for index, fileName in enumerate(L):
