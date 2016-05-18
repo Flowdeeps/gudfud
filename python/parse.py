@@ -1,3 +1,8 @@
+'''
+Open html files and parse the information into json format
+Best run from the root and using "input" when prompted
+'''
+
 import os
 import BeautifulSoup
 
