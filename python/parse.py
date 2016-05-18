@@ -14,7 +14,7 @@ print "userInput was " + path
 L = [f for f in os.listdir(path) if not f.startswith('.')]
 
 if not L.__len__() == 0:
-    print L
+    for index, fileName in enumerate(L):
+        print index, fileName
 else:
     print "No files found"
-    break
