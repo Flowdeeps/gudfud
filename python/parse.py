@@ -17,3 +17,4 @@ if not L.__len__() == 0:
     print L
 else:
     print "No files found"
+    break
