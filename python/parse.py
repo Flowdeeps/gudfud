@@ -21,7 +21,7 @@ def doHTML(L):
     print title
     matchTag = ["p", "a"]
     matchAttr = ["class", "itemprop"]
-    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text", "recipe-description__text", "chef__link", "author"]
+    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text", "recipe-description__text", "recipe-metadata__recommendations", "chef__link", "author"]
     for j in range(len(matchTag)):
         for n in range(len(matchAttr)):
             for i in range(len(matchClass)):
@@ -38,13 +38,17 @@ def doHTML(L):
                     elif ("_diet" in matchClass[i]):
                         vege = True
                         print "Vegetarian"
+                    elif ("_recom" in matchClass[i]):
+                        recommend = elem.text
+                        print "recommended: " + recommend
                     elif ("-desc" in matchClass[i]):
                         desc = elem.text
                         print "description: " + desc
                     elif ("auth" in matchClass[i]):
                         author = elem
                         if not author.img:
-                            print "author: " + author.text
+                            author = elem.text
+                            print "author: " + author
 if not L.__len__() == 0:
     for index, fileName in enumerate(L):
         '''
