@@ -21,7 +21,7 @@ def doHTML(L):
     print title
     matchTag = ["p", "a"]
     matchAttr = ["class", "itemprop"]
-    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text", "recipe-description__text", "recipe-metadata__recommendations", "chef__link", "author"]
+    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text", "recipe-description__text", "recipe-metadata__recommendations", "author"]
     for j in range(len(matchTag)):
         for n in range(len(matchAttr)):
             for i in range(len(matchClass)):
