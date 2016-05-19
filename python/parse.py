@@ -19,29 +19,32 @@ def doHTML(L):
     ''' title property '''
     title = soup.title.string.replace("BBC Food - Recipes - ","")
     print title
-    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text", "recipe-description__text", "author"]
-    for i in range(len(matchClass)):
-        for para in soup.findAll("p", {"class": matchClass[i]}):
-            if ("_prep" in matchClass[i]):
-                prep = para.text
-                print prep
-            elif ("_cook" in matchClass[i]):
-                cook = para.text
-                print cook
-            elif ("_serv" in matchClass[i]):
-                serves = para.text
-                print serves
-            elif ("_diet" in matchClass[i]):
-                vege = True
-                print serves
-            elif ("-desc" in matchClass[i]):
-                desc = para.text
-                print desc
-        for anchor in soup.findAll("a", {"itemprop": matchClass[i]}):
-            if ("auth" in matchClass[i]):
-                author = anchor.text
-                print author
-
+    matchTag = ["p", "a"]
+    matchAttr = ["class", "itemprop"]
+    matchClass = ["recipe-metadata__prep-time", "recipe-metadata__cook-time", "recipe-metadata__serving", "recipe-metadata__dietary-vegetarian-text", "recipe-description__text", "chef__link", "author"]
+    for j in range(len(matchTag)):
+        for n in range(len(matchAttr)):
+            for i in range(len(matchClass)):
+                for elem in soup.findAll(matchTag[j], {matchAttr[n]: matchClass[i]}):
+                    if ("_prep" in matchClass[i]):
+                        prep = elem.text
+                        print "prep: " + prep
+                    elif ("_cook" in matchClass[i]):
+                        cook = elem.text
+                        print "cook: " + cook
+                    elif ("_serv" in matchClass[i]):
+                        serves = elem.text
+                        print "serves: " + serves
+                    elif ("_diet" in matchClass[i]):
+                        vege = True
+                        print "Vegetarian"
+                    elif ("-desc" in matchClass[i]):
+                        desc = elem.text
+                        print "description: " + desc
+                    elif ("auth" in matchClass[i]):
+                        author = elem
+                        if not author.img:
+                            print "author: " + author.text
 if not L.__len__() == 0:
     for index, fileName in enumerate(L):
         '''
